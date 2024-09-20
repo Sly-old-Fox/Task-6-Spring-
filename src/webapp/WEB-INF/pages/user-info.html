@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h2>User info</h2>
+<form th:action="@{/saveUser}" th:object="${user}" method="post">
+    <table>
+        <input type="hidden" th:field="*{id}"/>
+        <tr>
+            <td> <label for="firstName">Name</label></td>
+            <td> <input th:field="*{firstName}" type="text" id="firstName" placeholder="Enter name" /></td>
+           <td> <div style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div></td>
+        </tr>
+        <tr>
+            <td><label for="lastName">Surname</label></td>
+            <td><input th:field="*{lastName}" type="text" id="lastName" placeholder="Enter surname"/></td>
+            <td><div style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div></td>
+        </tr>
+        <tr>
+            <td><label for="department">Department</label></td>
+            <td><input th:field="*{department}" type="text" id="department" placeholder="Enter department"/></td>
+            <td><div style="color: red" th:if="${#fields.hasErrors('department')}" th:errors="*{department}"></div></td>
+        </tr>
+        <tr>
+            <td><label for="phoneNumber">Phone number</label></td>
+            <td><input th:field="*{phoneNumber}" type="text" id="phoneNumber" placeholder="Enter phone number"/></td>
+            <td><div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div></td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit">Ok</button>
+    <button type="button" onclick="window.location.href='allUsers'">Cancel</button>
+
+<!--    <p style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="${user.firstName}"></p>-->
+<!--    <p style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="${user.lastName}"></p>-->
+</form>
+
+</body>
+</html>
